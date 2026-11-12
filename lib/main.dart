@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'auth/login.dart';
+import 'model/userdata.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Userdata().loadSavedComments(); // bring back comments saved earlier
   runApp(const MyApp());
 }
 
@@ -11,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MACAPUNDAGAG Activity 6',
+      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LoginPage(),
+      home: const LoginForm(),
     );
   }
 }
